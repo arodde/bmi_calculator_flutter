@@ -6,6 +6,8 @@ const activeCardColor = Color(0xFF1D1E33);
 // const activeCardColor = Color(0xFF4D1143);
 const double bottomContainerHeight = 80;
 const colorBottomContainerBackground = Color(0xFFEB1555);
+List<IconData> iconsData = [FontAwesomeIcons.mars, FontAwesomeIcons.venus];
+List<String> labels = ['MALE', 'FEMALE'];
 
 class InputPage extends StatefulWidget {
   @override
@@ -26,30 +28,19 @@ class _InputPageState extends State<InputPage> {
               Expanded(
                 child: ReusableCard(
                   colour: activeCardColor,
-                  cardChild: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        // ** 1 **
-                        const FaIcon(
-                          FontAwesomeIcons.mars,
-                          size: 80.0,
-                        ),
-                        SizedBox(
-                          height: 15.0,
-                        ),
-                        Text(
-                          'MALE',
-                          style: TextStyle(
-                            fontSize: 18.0,
-                            color: Color(0xFF8D8E98),
-                          ),
-                        ),
-                      ]),
+                  cardChild: IconContent(
+                    iconData: iconsData.elementAt(0),
+                    label: labels.elementAt(0),
+                  ),
                 ),
               ),
               Expanded(
                 child: ReusableCard(
                   colour: activeCardColor,
+                  cardChild: IconContent(
+                    iconData: iconsData.elementAt(1),
+                    label: labels.elementAt(1),
+                  ),
                 ),
               ),
             ],
@@ -84,6 +75,36 @@ class _InputPageState extends State<InputPage> {
         ),
       ]),
     );
+  }
+}
+
+class IconContent extends StatelessWidget {
+  IconContent({required this.iconData, required this.label});
+
+  final IconData iconData;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          // ** 1 **
+          Icon(
+            iconData,
+            size: 80.0,
+          ),
+          SizedBox(
+            height: 15.0,
+          ),
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: 18.0,
+              color: Color(0xFF8D8E98),
+            ),
+          ),
+        ]);
   }
 }
 
