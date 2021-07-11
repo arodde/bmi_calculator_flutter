@@ -1,13 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'reusable_card.dart';
+import 'item_content.dart';
 
 const activeCardColor = Color(0xFF1D1E33);
 // const activeCardColor = Color(0xFF4D1143);
 const double bottomContainerHeight = 80;
 const colorBottomContainerBackground = Color(0xFFEB1555);
-List<IconData> iconsData = [FontAwesomeIcons.mars, FontAwesomeIcons.venus];
-List<String> labels = ['MALE', 'FEMALE'];
+const List<IconData> iconsData = [
+  FontAwesomeIcons.mars,
+  FontAwesomeIcons.venus
+];
+const List<String> labels = ['MALE', 'FEMALE'];
 
 class InputPage extends StatefulWidget {
   @override
@@ -74,55 +79,6 @@ class _InputPageState extends State<InputPage> {
           margin: EdgeInsets.only(top: 10.0),
         ),
       ]),
-    );
-  }
-}
-
-class IconContent extends StatelessWidget {
-  IconContent({required this.iconData, required this.label});
-
-  final IconData iconData;
-  final String label;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          // ** 1 **
-          Icon(
-            iconData,
-            size: 80.0,
-          ),
-          SizedBox(
-            height: 15.0,
-          ),
-          Text(
-            label,
-            style: TextStyle(
-              fontSize: 18.0,
-              color: Color(0xFF8D8E98),
-            ),
-          ),
-        ]);
-  }
-}
-
-class ReusableCard extends StatelessWidget {
-  ReusableCard({required this.colour, this.cardChild});
-
-  final Color colour;
-  final Widget? cardChild;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: cardChild, // propriété oubliée GRRRrrrr!!!!!
-      decoration: BoxDecoration(
-        color: colour,
-        borderRadius: BorderRadius.circular(10.0),
-      ),
-      margin: EdgeInsets.all(15.0),
     );
   }
 }
