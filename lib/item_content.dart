@@ -19,7 +19,6 @@ class IconContent extends StatelessWidget {
     return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          // ** 1 **
           Icon(
             iconData,
             size: sizeIcon,

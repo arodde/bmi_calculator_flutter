@@ -5,6 +5,7 @@ import 'reusable_card.dart';
 import 'item_content.dart';
 
 const activeCardColor = Color(0xFF1D1E33);
+// const activeCardColor = Color(0xFF00ff00);
 const inactiveCardColor = Color(0xFF111328);
 const double bottomContainerHeight = 80;
 const colorBottomContainerBackground = Color(0xFFEB1555);
@@ -13,6 +14,7 @@ const List<IconData> iconsData = [
   FontAwesomeIcons.venus
 ];
 const List<String> labels = ['MALE', 'FEMALE'];
+enum Gender { male, female }
 
 class InputPage extends StatefulWidget {
   @override
@@ -22,8 +24,8 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   Color maleCardColor = inactiveCardColor;
   Color femaleCardColor = inactiveCardColor;
-  void updateColour(int gender) {
-    if (gender == 1) {
+  void updateColour(int genderSelected) {
+    if (genderSelected == Gender.male.index) {
       if (maleCardColor == inactiveCardColor) {
         maleCardColor = activeCardColor;
         femaleCardColor = inactiveCardColor;
@@ -31,7 +33,7 @@ class _InputPageState extends State<InputPage> {
         maleCardColor = inactiveCardColor;
       }
     }
-    if (gender == 2) {
+    if (genderSelected == Gender.female.index) {
       if (femaleCardColor == inactiveCardColor) {
         femaleCardColor = activeCardColor;
         maleCardColor = inactiveCardColor;
@@ -56,14 +58,14 @@ class _InputPageState extends State<InputPage> {
                   onTap: () {
                     print('MALE card was pressed');
                     setState(() {
-                      updateColour(1);
+                      updateColour(Gender.male.index);
                     });
                   },
                   child: ReusableCard(
                     colour: maleCardColor,
                     cardChild: IconContent(
-                      iconData: iconsData.elementAt(0),
-                      label: labels.elementAt(0),
+                      iconData: iconsData.elementAt(Gender.male.index),
+                      label: labels.elementAt(Gender.male.index),
                     ),
                   ),
                 ),
@@ -73,14 +75,14 @@ class _InputPageState extends State<InputPage> {
                   onTap: () {
                     print('FEMALE card was pressed.');
                     setState(() {
-                      updateColour(2);
+                      updateColour(Gender.female.index);
                     });
                   },
                   child: ReusableCard(
                     colour: femaleCardColor,
                     cardChild: IconContent(
-                      iconData: iconsData.elementAt(1),
-                      label: labels.elementAt(1),
+                      iconData: iconsData.elementAt(Gender.female.index),
+                      label: labels.elementAt(Gender.female.index),
                     ),
                   ),
                 ),
