@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'reusable_card.dart';
@@ -9,13 +8,14 @@ const activeCardColor = Color(0xFF1D1E33);
 const inactiveCardColor = Color(0xFF111328);
 const double bottomContainerHeight = 80;
 const colorBottomContainerBackground = Color(0xFFEB1555);
-const List<IconData> iconsData = [
-  FontAwesomeIcons.mars,
-  FontAwesomeIcons.venus
-];
+// const List<IconData> iconsData = [
+//   FontAwesomeIcons.mars,
+//   FontAwesomeIcons.venus
+// ];
 Gender selectedGender = Gender.male;
 
-const List<String> labels = ['MALE', 'FEMALE'];
+// const List<String> labels = ['MALE', 'FEMALE'];
+
 enum Gender { male, female }
 
 class InputPage extends StatefulWidget {
@@ -35,40 +35,34 @@ class _InputPageState extends State<InputPage> {
           child: Row(
             children: [
               Expanded(
-                child: GestureDetector(
-                  onTap: () {
-                    print('MALE card was pressed');
+                child: ReusableCard(
+                  onPress: () {
                     setState(() {
                       selectedGender = Gender.male;
                     });
                   },
-                  child: ReusableCard(
-                    colour: selectedGender == Gender.male
-                        ? activeCardColor
-                        : inactiveCardColor,
-                    cardChild: IconContent(
-                      iconData: iconsData.elementAt(Gender.male.index),
-                      label: labels.elementAt(Gender.male.index),
-                    ),
+                  colour: selectedGender == Gender.male
+                      ? activeCardColor
+                      : inactiveCardColor,
+                  cardChild: IconContent(
+                    icon: FontAwesomeIcons.mars,
+                    label: 'MALE',
                   ),
                 ),
               ),
               Expanded(
-                child: GestureDetector(
-                  onTap: () {
-                    print('FEMALE card was pressed.');
+                child: ReusableCard(
+                  onPress: () {
                     setState(() {
                       selectedGender = Gender.female;
                     });
                   },
-                  child: ReusableCard(
-                    colour: selectedGender == Gender.female
-                        ? activeCardColor
-                        : inactiveCardColor,
-                    cardChild: IconContent(
-                      iconData: iconsData.elementAt(Gender.female.index),
-                      label: labels.elementAt(Gender.female.index),
-                    ),
+                  colour: selectedGender == Gender.female
+                      ? activeCardColor
+                      : inactiveCardColor,
+                  cardChild: IconContent(
+                    icon: FontAwesomeIcons.venus,
+                    label: 'FEMALE',
                   ),
                 ),
               ),
@@ -78,6 +72,13 @@ class _InputPageState extends State<InputPage> {
         Expanded(
           child: ReusableCard(
             colour: activeCardColor,
+            onPress: () {
+              print('');
+            },
+            cardChild: IconContent(
+              label: 'XXXXX',
+              icon: FontAwesomeIcons.napster,
+            ),
           ),
         ),
         Expanded(
@@ -86,11 +87,25 @@ class _InputPageState extends State<InputPage> {
               Expanded(
                 child: ReusableCard(
                   colour: activeCardColor,
+                  onPress: () {
+                    print('');
+                  },
+                  cardChild: IconContent(
+                    label: 'xxxxX',
+                    icon: FontAwesomeIcons.napster,
+                  ),
                 ),
               ),
               Expanded(
                 child: ReusableCard(
                   colour: activeCardColor,
+                  onPress: () {
+                    print('');
+                  },
+                  cardChild: IconContent(
+                    label: 'XXXXX',
+                    icon: FontAwesomeIcons.napster,
+                  ),
                 ),
               ),
             ],
@@ -100,7 +115,9 @@ class _InputPageState extends State<InputPage> {
           color: colorBottomContainerBackground,
           width: double.infinity,
           height: bottomContainerHeight,
-          margin: EdgeInsets.only(top: 10.0),
+          margin: EdgeInsets.only(
+            top: 10.0,
+          ),
         ),
       ]),
     );
