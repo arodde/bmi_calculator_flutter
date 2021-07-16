@@ -2,19 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'reusable_card.dart';
 import 'item_content.dart';
+import 'constants.dart';
 
-const activeCardColor = Color(0xFF1D1E33);
-// const activeCardColor = Color(0xFF00ff00);
-const inactiveCardColor = Color(0xFF111328);
-const double bottomContainerHeight = 80;
-const colorBottomContainerBackground = Color(0xFFEB1555);
-// const List<IconData> iconsData = [
-//   FontAwesomeIcons.mars,
-//   FontAwesomeIcons.venus
-// ];
 Gender selectedGender = Gender.male;
-
-// const List<String> labels = ['MALE', 'FEMALE'];
 
 enum Gender { male, female }
 
@@ -30,7 +20,7 @@ class _InputPageState extends State<InputPage> {
       appBar: AppBar(
         title: Text('BMI CALCULATOR'),
       ),
-      body: Column(children: [
+      body: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         Expanded(
           child: Row(
             children: [
@@ -42,8 +32,8 @@ class _InputPageState extends State<InputPage> {
                     });
                   },
                   colour: selectedGender == Gender.male
-                      ? activeCardColor
-                      : inactiveCardColor,
+                      ? kActiveCardColor
+                      : kInactiveCardColor,
                   cardChild: IconContent(
                     icon: FontAwesomeIcons.mars,
                     label: 'MALE',
@@ -58,8 +48,8 @@ class _InputPageState extends State<InputPage> {
                     });
                   },
                   colour: selectedGender == Gender.female
-                      ? activeCardColor
-                      : inactiveCardColor,
+                      ? kActiveCardColor
+                      : kInactiveCardColor,
                   cardChild: IconContent(
                     icon: FontAwesomeIcons.venus,
                     label: 'FEMALE',
@@ -71,14 +61,32 @@ class _InputPageState extends State<InputPage> {
         ),
         Expanded(
           child: ReusableCard(
-            colour: activeCardColor,
+            colour: kActiveCardColor,
             onPress: () {
               print('');
             },
-            cardChild: IconContent(
-              label: 'XXXXX',
-              icon: FontAwesomeIcons.napster,
-            ),
+            cardChild:
+                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Text(
+                'HEIGHT',
+                style: kLabelTextStyle,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.baseline,
+                textBaseline: TextBaseline.alphabetic,
+                children: [
+                  Text(
+                    '180',
+                    style: kNumberTextStyle,
+                  ),
+                  Text(
+                    'cm',
+                    style: kLabelTextStyle,
+                  ),
+                ],
+              )
+            ]),
           ),
         ),
         Expanded(
@@ -86,7 +94,7 @@ class _InputPageState extends State<InputPage> {
             children: [
               Expanded(
                 child: ReusableCard(
-                  colour: activeCardColor,
+                  colour: kActiveCardColor,
                   onPress: () {
                     print('');
                   },
@@ -98,7 +106,7 @@ class _InputPageState extends State<InputPage> {
               ),
               Expanded(
                 child: ReusableCard(
-                  colour: activeCardColor,
+                  colour: kActiveCardColor,
                   onPress: () {
                     print('');
                   },
@@ -112,9 +120,9 @@ class _InputPageState extends State<InputPage> {
           ),
         ),
         Container(
-          color: colorBottomContainerBackground,
+          color: kColorBottomContainerBackground,
           width: double.infinity,
-          height: bottomContainerHeight,
+          height: kBottomContainerHeight,
           margin: EdgeInsets.only(
             top: 10.0,
           ),
