@@ -14,6 +14,8 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+  double _currentSliderValue = 165;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,28 +67,42 @@ class _InputPageState extends State<InputPage> {
             onPress: () {
               print('');
             },
-            cardChild:
-                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Text(
-                'HEIGHT',
-                style: kLabelTextStyle,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.baseline,
-                textBaseline: TextBaseline.alphabetic,
-                children: [
-                  Text(
-                    '180',
-                    style: kNumberTextStyle,
-                  ),
-                  Text(
-                    'cm',
-                    style: kLabelTextStyle,
-                  ),
-                ],
-              )
-            ]),
+            cardChild: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'HEIGHT',
+                  style: kLabelTextStyle,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.baseline,
+                  textBaseline: TextBaseline.alphabetic,
+                  children: [
+                    Text(
+                      _currentSliderValue.round().toString(), //'180',
+                      style: kNumberTextStyle,
+                    ),
+                    Text(
+                      'cm',
+                      style: kLabelTextStyle,
+                    ),
+                  ],
+                ),
+                Slider(
+                  value: _currentSliderValue,
+                  min: 0,
+                  max: kMaxHeight,
+                  divisions: kMaxHeight.toInt(),
+                  label: _currentSliderValue.round().toString(),
+                  onChanged: (double value) {
+                    setState(() {
+                      _currentSliderValue = value;
+                    });
+                  },
+                ),
+              ],
+            ),
           ),
         ),
         Expanded(
