@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-const double kMaxHeight = 210;
+const double kMinHeight = 120;
+const double kMaxHeight = 220;
 const kActiveCardColor = Color(0xFF1D1E33);
 // const kActiveCardColor = Color(0xFF00ff00);
 const kInactiveCardColor = Color(0xFF111328);
