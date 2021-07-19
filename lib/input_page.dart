@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'reusable_card.dart';
 import 'item_content.dart';
@@ -138,11 +137,15 @@ class _InputPageState extends State<InputPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          RoundIconButton(),
+                          RoundIconButton(
+                            icon: FontAwesomeIcons.minus,
+                          ),
                           SizedBox(
                             width: 10.0,
                           ),
-                          RoundIconButton(),
+                          RoundIconButton(
+                            icon: FontAwesomeIcons.plus,
+                          ),
                         ],
                       ),
                     ],
@@ -178,12 +181,19 @@ class _InputPageState extends State<InputPage> {
 }
 
 class RoundIconButton extends StatelessWidget {
+  RoundIconButton({required this.icon});
+
+  final IconData icon;
+
   @override
   Widget build(BuildContext context) {
     return RawMaterialButton(
+      child: Icon(icon),
+      constraints: BoxConstraints.tightFor(width: 56.0, height: 56.0),
       shape: CircleBorder(),
       fillColor: Color(0xFF4C4F5E),
-      onPressed: null,
+      elevation: 0.0,
+      onPressed: () {},
     );
   }
 }
