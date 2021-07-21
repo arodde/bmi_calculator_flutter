@@ -1,8 +1,18 @@
+import 'package:bmi_calculator_flutter/components/bottomButton.dart';
 import 'package:bmi_calculator_flutter/constants.dart';
-import 'package:bmi_calculator_flutter/Components/reusable_card.dart';
+import 'package:bmi_calculator_flutter/components/reusable_card.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ResultsPage extends StatelessWidget {
+  ResultsPage(
+      {required this.bmiResult,
+      required this.resultText,
+      required this.interpretation});
+
+  final String bmiResult;
+  final String resultText;
+  final String interpretation;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,8 +25,10 @@ class ResultsPage extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
+              margin: EdgeInsets.all(15.0),
+              alignment: Alignment.bottomLeft,
               child: Text(
-                'Your Result',
+                'YourResult',
                 style: kTitleTextStyle,
               ),
             ),
@@ -29,15 +41,15 @@ class ResultsPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    'Normal',
+                    resultText.toUpperCase(),
                     style: kResultTextStyle,
                   ),
                   Text(
-                    '2.3',
+                    bmiResult,
                     style: kBMITextStyle,
                   ),
                   Text(
-                    'comment',
+                    interpretation,
                     style: kBodyStyleText,
                     textAlign: TextAlign.center,
                   ),
@@ -46,6 +58,12 @@ class ResultsPage extends StatelessWidget {
             ),
             flex: 5,
           ),
+          BottomButton(
+              onTap: () {
+                Navigator.pop(context);
+                print('re-calculate');
+              },
+              buttonTitle: "RE-CALCULATE")
         ],
       ),
     );
