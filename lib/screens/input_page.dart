@@ -29,7 +29,8 @@ class _InputPageState extends State<InputPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('BMI CALCULATOR'),
+        title: Text('Calculateur IMC'),
+        // title: Text('BMI CALCULATOR'),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -49,7 +50,8 @@ class _InputPageState extends State<InputPage> {
                         : kInactiveCardColor,
                     cardChild: IconContent(
                       icon: FontAwesomeIcons.mars,
-                      label: 'MALE',
+                      label: 'HOMME',
+                      // label: 'MALE',
                     ),
                   ),
                 ),
@@ -65,7 +67,8 @@ class _InputPageState extends State<InputPage> {
                         : kInactiveCardColor,
                     cardChild: IconContent(
                       icon: FontAwesomeIcons.venus,
-                      label: 'FEMALE',
+                      label: 'FEMME',
+                      // label: 'FEMALE',
                     ),
                   ),
                 ),
@@ -82,7 +85,8 @@ class _InputPageState extends State<InputPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'HEIGHT',
+                    'Taille',
+                    // 'HEIGHT',
                     style: kLabelTextStyle,
                   ),
                   Row(
@@ -139,7 +143,8 @@ class _InputPageState extends State<InputPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'WEIGHT',
+                          'POIDS',
+                          // 'WEIGHT',
                           style: kLabelTextStyle,
                         ),
                         Text(weight.toString(), style: kNumberTextStyle),
@@ -214,7 +219,8 @@ class _InputPageState extends State<InputPage> {
             ),
           ),
           BottomButton(
-            buttonTitle: 'CALCULATE',
+            buttonTitle: 'CALCULER',
+            // buttonTitle: 'CALCULATE',
             onTap: () {
               CalculatorBrain calc =
                   CalculatorBrain(height: height, weight: weight);

@@ -12,20 +12,23 @@ class CalculatorBrain {
 
   String getResult() {
     if (_bmi >= 25) {
-      return 'Overweight';
+      return 'Surpoids'; //'Overweight';
     } else if (_bmi > 18.5) {
       return 'Normal';
     } else {
-      return 'Underweight';
+      return 'Poids insuffisant'; //'Underweight';
     }
   }
 
   String getInterpretation() {
     if (_bmi >= 25) {
-      return 'You have a higher than normal body weight. Try to exercise more.';
+      return 'Vous avez un poids corporel supérieur à la normale. Essayez de faire plus d\'exercice.';
+      //return 'You have a higher than normal body weight. Try to exercise more.';
     } else if (_bmi > 18.5) {
+      return 'Vous avez un poids corporel normal. Bon boulot !';
       return 'You have a normal body weight. Gook job!';
     } else {
+      return 'Vous avez un poids corporel inférieur à la normale. Vous pouvez manger un peu plus.';
       return 'You have a lower than normal body weight. You can eat a bit more.';
     }
   }
