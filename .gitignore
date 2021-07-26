@@ -1,5 +1,5 @@
 # Miscellaneous mine
-multi_languages.dart
+lib/multi_languages.dart
 # Miscellaneous
 *.class
 *.log
