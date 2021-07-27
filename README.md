@@ -1,3 +1,7 @@
+Dernière application réalisée dans le cadre de la formation suivie en Flutter. Me permettant d'acquérir de la pratique sur l'utilisation du framework
+
+
+
 ![App Brewery Banner](https://github.com/londonappbrewery/Images/blob/master/AppBreweryBanner.png)
 
 
